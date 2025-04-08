@@ -1,0 +1,60 @@
+<div class="operations">
+	<h1 class="big-title operations-title">Доходы и расходы</h1>
+	<div class="operations-actions">
+		<a href="/operations/create?category=income" class="btn btn-success edit-btn" id="create-income">Создать доход</a>
+		<a href="/operations/create?category=expense" class="btn btn-danger edit-btn" id="create-expense">Создать расход</a>
+	</div>
+	<div class="operations-nav navigate">
+		<ul class="nav nav-pills nav-date">
+			<li class="nav-item">
+				<a class="nav-link" href="/operations?period=today">Сегодня</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/operations?period=week">Неделя</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/operations?period=month">Месяц</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/operations?period=all">Все</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="period-interval" href="/operations?period=interval">Интервал</a>
+			</li>
+		</ul>
+		<div class="nav-input" id="date-elements">
+			<span class="nav-input-text">С</span> <input type="date" class="nav-input-date" id="date-from">
+			<span class="nav-input-text">по</span> <input type="date" class="nav-input-date" id="date-to">
+		</div>
+	</div>
+
+	<div class="table-wrapper">
+		<table class="table text-center operations-table">
+			<thead>
+			<tr>
+				<th class="table-title" scope="col">№ <span class="s-hidden">операции</span></th>
+				<th class="table-title" scope="col">Тип</th>
+				<th class="table-title" scope="col">Категория</th>
+				<th class="table-title" scope="col">Сумма</th>
+				<th class="table-title" scope="col">Дата</th>
+				<th class="table-title" scope="col">Комментарий</th>
+				<th class="table-title" scope="col"></th>
+			</tr>
+			</thead>
+			<tbody id='table-body'>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="modal-wrapper" id="modal-delete">
+	<div class="modal-content">
+		<div class="modal-body">
+			<p>Вы действительно хотите удалить операцию?</p>
+		</div>
+		<div class="modal-buttons">
+			<a class="btn btn-success mr12" id="confirmDeleteButton" href="">Да, удалить</a>
+			<a class="btn btn-danger" id="cancelDeleteButton" href="javascript:void(0)">Не удалять</a>
+		</div>
+	</div>
+</div>

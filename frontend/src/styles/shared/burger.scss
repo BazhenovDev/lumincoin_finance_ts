@@ -1,0 +1,84 @@
+@use "variables.scss";
+
+.burger {
+  display: none;
+  position: absolute;
+  right: 20px;
+  width: 30px;
+  height: 10px;
+  top: 30px;
+
+  span {
+    margin-bottom: 3px;
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: variables.$burger-color;
+    transition: all .3s linear;
+
+    &:first-child {
+      transform: rotate(0deg);
+    }
+
+    &:nth-child(2) {
+      transform: rotate(0deg);
+    }
+
+    &:last-child {
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    span {
+      &:first-child {
+        transform: rotate(-45deg);
+        position: relative;
+        top: 5px;
+      }
+
+      &:nth-child(2) {
+        transform: rotate(45deg);
+        position: relative;
+      }
+
+      &:last-child {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.custom-modal {
+  width: 100vw;
+  min-height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: variables.$custom-modal-bg;
+  overflow: hidden;
+  .modal {
+    &-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: variables.$main-bg-color;
+      padding: 30px 70px;
+      border-radius: 50px;
+    }
+    &-text {
+      text-align: center;
+      font-size: 14px;
+      color: variables.$secondary-text-color;
+      p {
+        margin-bottom: 10px;
+      }
+    }
+    &-btn {
+      width: 150px;
+    }
+  }
+  .show {
+    display: flex;
+  }
+}

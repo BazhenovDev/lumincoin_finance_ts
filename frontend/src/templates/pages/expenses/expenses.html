@@ -1,0 +1,26 @@
+<div class="expenses">
+	<h1 class="expenses-title big-title">Расходы</h1>
+	<div class="card-wrapper">
+		<div class="card card-plus">
+			<a href="/expenses/create" class="card-plus-link">
+				<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-plus card-plus-icon" viewBox="0 0 16 16">
+					<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+				</svg>
+			</a>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal-wrapper" id="modal-delete">
+	<div class="modal-content">
+		<div class="modal-body">
+			<p>Вы действительно хотите удалить категорию?</p>
+			<p>Связанные доходы будут удалены навсегда.</p>
+		</div>
+		<div class="modal-buttons">
+			<a class="btn btn-success mr12" id="confirmDeleteButton" href="">Да, удалить</a>
+			<a class="btn btn-danger" id="cancelDeleteButton" href="javascript:void(0)">Не удалять</a>
+		</div>
+	</div>
+</div>

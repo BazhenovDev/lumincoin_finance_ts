@@ -1,0 +1,72 @@
+@use "variables";
+
+.form {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &-logo {
+    margin-bottom: 60px;
+  }
+  &-title {
+    margin-bottom: 20px;
+  }
+  &-body {
+    width: 397px;
+  }
+  .input-group {
+    margin-bottom: 10px;
+    max-width: 100%;
+    &-text {
+      background-color: variables.$input-icon-bg-color;
+    }
+    input {
+      background-color: transparent;
+      font-size: 15px;
+      line-height: 24px;
+      color: variables.$input-text-color;
+    }
+    &>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+  &-check {
+    margin-bottom: 20px;
+    &-input {
+      width: 13px;
+      height: 13px;
+      margin-top: 6px;
+      background-color: transparent
+    }
+    &-label {
+      font-size: 12px;
+      line-height: 23px;
+      color: variables.$secondary-text-color;
+    }
+  }
+  &-btn {
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 18px;
+    color: variables.$main-btn-text-color;
+    padding: 9px;
+  }
+  svg {
+    fill: variables.$svg-fill-color;
+  }
+  &-link {
+    font-size: 12px;
+    line-height: 14px;
+    color: variables.$secondary-text-color;
+    a {
+      font-size: 12px;
+      line-height: 14px;
+      color: variables.$link-color;
+    }
+  }
+  .mb-20 {
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,56 @@
+<section class="login">
+	<div class="container">
+		<div class="form">
+			<a href="/" class="form-logo" >
+				<img src="/static/images/Logo.png" alt="Логотип">
+			</a>
+			<h1 class="form-title big-title">Вход</h1>
+			<form class="form-body">
+				<div class="input-group">
+					<span class="input-group-text">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							 class="bi bi-envelope-open"
+							 viewBox="0 0 16 16">
+						  <path d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882zM15 7.383l-4.778 2.867L15 13.117zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765z"/>
+						</svg>
+					</span>
+					<input type="email" class="form-control" placeholder="Электронная почта" id="email-form">
+					<div id="email-formFeedback" class="invalid-feedback text-center">
+						Введите корректный e-mail
+					</div>
+				</div>
+
+
+				<div class="input-group">
+					<span class="input-group-text">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							 class="bi bi-lock"
+							 viewBox="0 0 16 16">
+						  <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1"/>
+						</svg>
+					</span>
+					<input type="password" class="form-control" placeholder="Пароль" id="password-form">
+					<div id="password-formFeedback" class="invalid-feedback text-center">
+						Введите пароль
+					</div>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" value="" id="remember-me">
+					<label class="form-check-label" for="remember-me">
+						Запомнить меня
+					</label>
+				</div>
+				<button type="button" class="btn btn-primary w-100 form-btn" id="login-btn">Войти</button>
+				<p class="form-link">Ещё нет аккаунта? <a href="/signup" class="link-primary">Пройдите регистрацию</a></p>
+			</form>
+		</div>
+	</div>
+</section>
+
+<div class="custom-modal modal" id="custom-modal">
+	<div class="modal-wrap">
+		<div id="modal-text" class="modal-text">
+		</div>
+		<button class="modal-btn btn btn-primary" id="custom-modal-btn">ОК</button>
+	</div>
+</div>

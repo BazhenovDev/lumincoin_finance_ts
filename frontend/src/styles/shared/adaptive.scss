@@ -1,0 +1,344 @@
+@use "variables";
+
+@media screen and (max-width: 1380px) {
+  .main {
+    .charts {
+      &-wrapper {
+        .main-line {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1255px) {
+  .main {
+    .charts {
+      &-wrapper {
+        .chart {
+          width: 350px;
+        }
+
+        .main-line {
+          height: 310px;
+          top: 75px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1201px) {
+  .nav-date {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 1059px) {
+  .content-wrapper {
+    padding: 60px 30px;
+  }
+  .main {
+    .charts {
+      &-wrapper {
+        flex-direction: column;
+        align-items: center;
+
+        .chart {
+          width: 437px;
+        }
+
+        .main-line {
+          height: 1px;
+          width: 437px;
+          top: 0;
+          margin: 20px 0;
+        }
+      }
+    }
+
+    &-nav {
+      margin-bottom: 70px;
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .operations {
+    .table-wrapper {
+      .table {
+        thead {
+          display: none;
+        }
+
+        tr {
+          margin-bottom: 10px;
+          display: block;
+          border-bottom: 2px solid variables.$table-border
+        }
+
+        td {
+          display: block;
+          text-align: right;
+        }
+
+        td:before {
+          content: attr(data-label);
+          float: left;
+          color: variables.$table-title-color;
+          font-family: "RobotoBold", sans-serif;
+        }
+
+        &-icon {
+          &:first-child {
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .nav {
+    &-date {
+      .nav {
+        &-item {
+          width: 90px;
+        }
+
+        &-link {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .nav {
+    &-date {
+      .nav {
+        &-item {
+          width: 70px;
+          margin-right: 10px;
+        }
+
+        &-link {
+          font-size: 12px;
+          padding: 6px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 711px) {
+  .wrapper {
+    max-height: 100%;
+  }
+  .content-wrapper {
+    padding: 50px 10px;
+    display: flex;
+    justify-content: center;
+
+  }
+  .burger {
+    display: block;
+  }
+  .wrapper {
+    .layout-wrapper {
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      background: variables.$main-bg-color;
+      left: -219px;
+
+      &.show {
+        left: 0;
+      }
+    }
+  }
+
+  .main {
+    &-title {
+      margin-bottom: 30px;
+    }
+
+    &-nav {
+      margin-bottom: 30px;
+    }
+  }
+  .nav-date {
+    margin-bottom: 0;
+  }
+}
+
+
+@media screen and (max-width: 682px) {
+  .nav-date {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .modal {
+    &-body {
+      p {
+        font-size: 14px;
+      }
+    }
+
+    &-buttons {
+      .btn {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .main {
+    .charts {
+      &-wrapper {
+        .chart {
+          width: 350px;
+        }
+
+        .main {
+          &-line {
+            width: 350px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .big-title {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .form {
+    &-body {
+      width: 360px;
+    }
+  }
+}
+
+@media screen and (max-width: 419px) {
+  .nav {
+    &-date {
+      display: flex;
+      flex-wrap: wrap;
+
+      .nav-item {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .main {
+    .charts {
+      &-wrapper {
+        .chart {
+          width: 290px;
+        }
+
+        .main {
+          &-line {
+            width: 290px;
+          }
+        }
+      }
+    }
+  }
+  .operations {
+    .table {
+      td {
+        font-size: 14px;
+      }
+    }
+  }
+  .modal {
+    &-content {
+      padding: 20px;
+    }
+
+    &-body {
+      p {
+        text-align: center;
+      }
+    }
+  }
+  .create {
+    &-title {
+      font-size: 28px;
+    }
+
+    &-input {
+      width: 290px;
+    }
+  }
+  .edit {
+    &-title {
+      font-size: 28px;
+    }
+
+    &-input {
+      width: 290px;
+    }
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .form {
+    &-body {
+      width: 330px;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .form {
+    &-title {
+      font-size: 32px;
+    }
+  }
+  .card {
+    &-wrapper {
+      justify-content: center;
+
+      .card {
+        width: 300px;
+      }
+    }
+  }
+
+  .modal {
+    &-body {
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .form {
+    &-body {
+      width: 310px;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .form {
+    &-body {
+      width: 280px;
+    }
+  }
+}

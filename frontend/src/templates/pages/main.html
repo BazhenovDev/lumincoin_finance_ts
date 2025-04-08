@@ -1,0 +1,38 @@
+<div class="main">
+		<h1 class="main-title big-title">Главная</h1>
+		<div class="main-nav navigate">
+			<ul class="nav nav-pills nav-date">
+				<li class="nav-item">
+					<a class="nav-link" href="" id="today">Сегодня</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="" id="week">Неделя</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="" id="month">Месяц</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="" id="all">Все</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="" id="period-interval">Интервал</a>
+				</li>
+			</ul>
+			<div class="nav-input" id="date-elements">
+				<span class="nav-input-text">С</span><input type="date" class="nav-input-date" id="date-from">
+				<span class="nav-input-text">по</span><input type="date" class="nav-input-date" id="date-to">
+			</div>
+		</div>
+
+		<div class="charts-wrapper d-flex">
+			<div class="chart incomes-chart">
+<!--				<div class="chart-title">Доходы</div>-->
+				<canvas id="incomesChart"></canvas>
+			</div>
+			<div class="main-line"></div>
+			<div class="chart expense-chart">
+<!--				<div class="chart-title">Расходы</div>-->
+				<canvas id="expenseChart"></canvas>
+			</div>
+		</div>
+</div>

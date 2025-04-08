@@ -1,0 +1,32 @@
+@use "variables";
+
+.main {
+  &-title {
+    margin-bottom: 60px;
+  }
+
+  &-nav {
+    margin-bottom: 140px;
+  }
+
+  &-line {
+    width: 1px;
+    background-color: variables.$layout-border;
+    position: relative;
+    top: 57px;
+    height: 450px;
+    margin: 0 84px;
+  }
+  .charts-wrapper {
+    .chart {
+      width: 437px;
+      &-title {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: variables.$chart-title-text;
+        font-family: "RobotoMedium", sans-serif;
+      }
+    }
+  }
+}

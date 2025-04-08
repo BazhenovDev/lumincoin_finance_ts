@@ -1,0 +1,58 @@
+@use "../shared/variables.scss";
+
+.operations {
+  &-title {
+    margin-bottom: 40px;
+  }
+  &-actions {
+   margin-bottom: 40px;
+  }
+  &-nav {
+    margin-bottom: 40px;
+  }
+  .table {
+    box-sizing: border-box;
+    width: 100%;
+    --bs-table-bg: tranperent;
+    border-top: 1px solid variables.$table-border;
+    td {
+      font-size: 16px;
+      line-height: 23px;
+      text-align: center;
+    }
+    &-title {
+      font-family: "RobotoBold", sans-serif;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 1.33333px;
+      color: variables.$table-title-color;
+      padding: 15px 0;
+      &:last-child {
+        width: 60px;
+      }
+    }
+    &-number {
+      font-family: "RobotoBold", sans-serif;
+      font-size: 16px;
+      line-height: 23px;
+      color: variables.$table-number-color;
+    }
+    &-expenses {
+      color: variables.$table-expenses-color;
+    }
+    &-income {
+      color: variables.$table-income-color;
+    }
+    &-icon {
+      text-decoration: none;
+      fill: variables.$table-icon-fill;
+      transition: fill .2s ease;
+      :hover {
+        fill: variables.$table-icon-hover-fill;
+      }
+      &:first-child {
+        margin-right: 5px;
+      }
+    }
+  }
+}

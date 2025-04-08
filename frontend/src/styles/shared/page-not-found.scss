@@ -1,0 +1,20 @@
+@use "variables.scss";
+
+.page-not-found {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: 18px;
+    color: variables.$main-title-page-color;
+
+    a {
+      font-family: 'RobotoBold', sans-serif;
+      color: variables.$link-color;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,483 @@
+@use "variables";
+@use "fonts";
+
+@use "form";
+
+@use "main";
+
+@use "../income/income";
+
+@use "../expenses/expenses";
+
+@use "../operations/operations";
+
+
+body {
+  background-color: variables.$main-bg-color;
+  font-family: 'Roboto', sans-serif;
+}
+
+.content-wrapper {
+  padding: 120px 60px;
+  width: 100vw;
+  overflow-y: scroll;
+
+}
+
+.big-title {
+  color: variables.$main-title-page-color;
+  font-family: 'RobotoMedium', sans-serif;
+  font-size: 40px;
+}
+
+
+.wrapper {
+  max-height: 100vh;
+
+  .layout-wrapper {
+    height: 100vh;
+    padding: 40px 20px;
+    border-right: 1px solid variables.$layout-border;
+    transition: all .3s ease;
+    max-width: 219px;
+    //position: fixed;
+    //top: 0;
+    .layout {
+      &-image {
+        border-bottom: 1px solid variables.$layout-border;
+        margin: 0 -20px 60px;
+
+        img {
+          width: 98px;
+          margin: 0 0 20px 50px;
+        }
+      }
+
+      &-balance {
+        font-family: "RobotoMedium", sans-serif;
+        padding-bottom: 20px;
+        border-bottom: 1px solid variables.$layout-border;
+        margin: 0 -20px;
+
+        &-text {
+          color: variables.$main-title-page-color;
+          font-size: 14px;
+          line-height: 16px;
+          margin-bottom: 0;
+          margin-left: 20px;
+        }
+
+        &-link {
+          color: variables.$link-color;
+          text-decoration: none;
+          font-size: 14px;
+          line-height: 16px;
+          margin-left: 10px;
+        }
+      }
+
+      &-user {
+        margin-top: 20px;
+        cursor: pointer;
+
+        &-avatar {
+          width: 36px;
+          height: 36px;
+          background-color: variables.$avatar-bg;
+          border-radius: 50%;
+          margin-right: 16px;
+          color: variables.$svg-fill-color;
+        }
+
+        &-info {
+          margin-bottom: 0;
+          font-size: 14px;
+          line-height: 24px;
+          color: variables.$user-info-color;
+        }
+      }
+    }
+
+    .nav {
+      &-link {
+        color: variables.$main-title-page-color;
+        font-size: 14px;
+        line-height: 16px;
+        padding: 12px 11px 12px 16px;
+        text-align: unset;
+
+        &.active {
+          color: variables.$main-btn-text-color;
+        }
+
+        svg {
+          margin-right: 6px;
+        }
+
+        &:hover {
+          background-color: variables.$link-color;
+          color: variables.$main-btn-text-color;
+        }
+      }
+    }
+
+    .btn-toggle {
+      font-size: 14px;
+      line-height: 16px;
+      color: #052C65;
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      padding: 12px 16px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &:focus {
+        background-color: variables.$link-color;
+        color: variables.$main-btn-text-color;
+      }
+
+      &:hover {
+        background-color: variables.$link-color;
+        color: variables.$main-btn-text-color;
+      }
+
+      &-link {
+        font-size: 14px;
+        line-height: 16px;
+        color: #052C65;
+        font-family: "Roboto", sans-serif;
+        &.active {
+          background-color: variables.$link-color;
+          color: variables.$main-btn-text-color;
+        }
+      }
+
+      &-nav {
+        a:hover, a:focus {
+          background-color: variables.$link-color;
+          color: variables.$main-btn-text-color;
+        }
+      }
+
+      &::before {
+        content: none;
+      }
+
+      &::after {
+        width: 1.25em;
+        line-height: 0;
+        content: '\276F';
+        font-size: 20px;
+        transition: transform .35s ease;
+        transform-origin: .5em 50%;
+      }
+
+      &[aria-expanded="true"]::after {
+        transform: rotate(90deg);
+      }
+    }
+
+    .dropdown {
+      &-menu {
+        background-color: variables.$main-bg-color;
+        transition: .25s ease;
+
+        &:hover {
+          background-color: variables.$hover-color;
+
+          .dropdown-item {
+            color: variables.$hover-text-color;
+            background-color: transparent;
+          }
+        }
+      }
+
+      &-item {
+        color: variables.$user-info-color;
+      }
+    }
+  }
+}
+
+//Попап баланса
+
+.balance-popup {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: variables.$custom-modal-bg;
+  &-wrapper {
+    width: max(280px, 300px);
+    border-radius: 8px;
+    background-color: variables.$main-bg-color;
+    padding: 20px 50px;
+    .form-control {
+      text-align: end;
+    }
+  }
+  &-btn {
+    margin-top: 10px;
+    width: 100%;
+  }
+  &-error {
+    display: none;
+    margin: 5px 0 0;
+    text-align: center;
+    color: variables.$text-error-color;
+    font-size: 14px;
+  }
+}
+
+//Навигация на главной странице и доходы/расходы
+
+.nav-date {
+  .nav {
+    &-item {
+      border: 1px solid variables.$main-nav-colors;
+      border-radius: 5px;
+      margin-right: 20px;
+      width: 100px;
+      text-align: center;
+      box-sizing: border-box;
+      transition: .3s ease;
+
+      &:hover {
+        background-color: variables.$card-bg-hover;
+      }
+
+      .active {
+        background-color: variables.$main-nav-colors;
+        border-radius: 4px;
+
+        &:hover {
+          background-color: variables.$card-bg-hover;
+          color: variables.$main-nav-colors;
+        }
+      }
+    }
+
+    &-link {
+      padding: 8px;
+      color: variables.$main-nav-colors;
+      font-family: "RobotoMedium", sans-serif;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+}
+
+.navigate {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .nav-input {
+    &-date {
+      background-color: transparent;
+      border: 1px solid variables.$main-nav-colors;
+      border-radius: 5px;
+      padding: 6.5px 2px;
+      font-size: 16px;
+      line-height: 19px;
+      width: 110px;
+    }
+
+    &-text {
+      margin-right: 5px;
+      font-size: 16px;
+      line-height: 19px;
+      color: variables.$secondary-text-color;
+      font-family: "RobotoMedium", sans-serif;
+    }
+  }
+}
+
+
+//Карточки расходов/доходов
+
+.card {
+  box-sizing: border-box;
+  width: 352px;
+  border: 1px solid variables.$card-border;
+  transition: .3s ease;
+  background-color: transparent;
+
+  &:hover {
+    transform: scale(1.03);
+    background-color: variables.$card-bg-hover;
+  }
+
+  &-body {
+    padding: 20px;
+  }
+
+  &-title {
+    font-family: "RobotoMedium", sans-serif;
+    font-size: 28px;
+    line-height: 33px;
+    color: variables.$card-title-text;
+  }
+
+  &-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: "RobotoMedium", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    padding: 11px 16px;
+
+    &:last-child {
+      margin-left: 10px;
+    }
+  }
+
+  &-plus {
+    text-align: center;
+    background-color: transparent;
+    transition: 0.3s ease;
+
+    &-link {
+      padding: 46px;
+    }
+
+    &-icon {
+      height: 29px;
+      fill: variables.$card-plus-color;
+    }
+  }
+}
+
+.modal {
+  &-wrapper {
+    transition: all 0.3s ease;
+    opacity: 0;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: variables.$custom-modal-bg;
+    z-index: -10;
+    &.active {
+      z-index: 10;
+      opacity: 1;
+    }
+  }
+
+
+  &-content {
+    background-color: variables.$main-bg-color;
+    padding: 40px;
+    max-width: 530px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 0 10px;
+  }
+
+  &-body {
+    padding: 0;
+    p {
+      font-size: 20px;
+      line-height: 23px;
+      color: variables.$card-title-text;
+      margin: 0;
+    }
+  }
+
+  &-buttons {
+    margin-top: 20px;
+    text-align: center;
+
+    .mr12 {
+      margin-right: 12px;
+    }
+
+    .btn {
+      padding: 11px 16px;
+    }
+  }
+}
+
+a.disabled {
+  pointer-events: none;
+}
+
+// Создание категории расхода/дохода
+.create {
+  &-title {
+    margin-bottom: 40px;
+  }
+
+  &-input {
+    width: 397px;
+  }
+
+  &-actions {
+    margin-top: 20px;
+  }
+
+  &-btn {
+    padding: 11px 16px;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: "RobotoMedium", sans-serif;
+    color: variables.$main-btn-text-color;
+
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+
+//Редактирование категории расхода/дохода
+.edit {
+  &-title {
+    margin-bottom: 40px;
+  }
+
+  &-input {
+    width: 397px;
+  }
+
+  &-actions {
+    margin-top: 20px;
+  }
+
+  &-btn {
+    padding: 11px 16px;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: "RobotoMedium", sans-serif;
+    color: variables.$main-btn-text-color;
+
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+
+//Создание дохода/расхода
+.operations {
+  &-form {
+    max-width: 400px;
+
+    .form {
+      &-input {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+
