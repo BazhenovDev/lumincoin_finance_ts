@@ -5,10 +5,11 @@ import {
     OperationsResponseType, OperationsResultForData
 } from "../types/operations-response.type";
 import {Chart} from "chart.js/auto";
+import {OpenNewRouteType} from "../types/opennewroute.type";
 
 export class MainPage {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly dateElements: HTMLElement | null;
     readonly dateFromElement: HTMLInputElement | null;
     readonly dateToElement: HTMLInputElement | null;
@@ -16,7 +17,7 @@ export class MainPage {
     readonly incomesChartElement: HTMLElement | null;
     readonly expenseChartElement: HTMLElement | null;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
 
         this.openNewRoute = openNewRoute;
 
