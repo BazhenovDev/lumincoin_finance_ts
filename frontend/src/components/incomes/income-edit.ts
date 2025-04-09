@@ -3,16 +3,17 @@ import {
     IncomeResponseById, IncomeResponseList,
 } from "../../types/income-response.type";
 import {ErrorResponse} from "../../types/response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class IncomesEdit {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly inputNameElement: HTMLElement | null | undefined;
     readonly editButtonElement: HTMLElement | null | undefined;
     readonly cancelButtonElement: HTMLElement | null | undefined;
     private getIncomeResult: IncomeResponseList | null | undefined;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
         this.editButtonElement = document.getElementById('edit-btn');
         this.cancelButtonElement = document.getElementById('cancel-btn');
@@ -22,7 +23,8 @@ export class IncomesEdit {
         const incomeId: string | null = url.get('id');
 
         if (!incomeId) {
-            return this.openNewRoute('/income');
+            this.openNewRoute('/income').then();
+            return;
         }
 
         this.inputNameElement = document.getElementById('income-create');

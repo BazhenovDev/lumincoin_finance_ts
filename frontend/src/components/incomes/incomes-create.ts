@@ -1,15 +1,16 @@
 import {HttpUtils} from "../../utils/http-utils";
 import {IncomeResponseById} from "../../types/income-response.type";
 import {ErrorResponse} from "../../types/response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class IncomesCreate {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly incomeNameInput: HTMLElement | null | undefined;
     readonly createButtonElement: HTMLElement | null;
     readonly cancelButtonElement: HTMLElement | null;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
         this.createButtonElement = document.getElementById('create-btn');
         this.cancelButtonElement = document.getElementById('cancel-btn');

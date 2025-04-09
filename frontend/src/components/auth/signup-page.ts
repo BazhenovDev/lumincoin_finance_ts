@@ -1,10 +1,11 @@
 import {AuthUtils} from "../../utils/auth-utils";
 import {HttpUtils} from "../../utils/http-utils";
 import {DefaultErrorResponseType, LoginResponseType, SignUpResponseType} from "../../types/auth-response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class SignupPage {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly nameInputElement: HTMLInputElement | null | undefined;
     readonly emailInputElement: HTMLInputElement | null | undefined;
     readonly passwordInputElement: HTMLInputElement | null | undefined;
@@ -15,11 +16,12 @@ export class SignupPage {
     private modalText: HTMLElement | null | undefined;
     private modalBtn: HTMLElement | null | undefined;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
 
         if (AuthUtils.getUserInfo(AuthUtils.accessTokenKey)) {
-            return this.openNewRoute('/');
+            this.openNewRoute('/').then();
+            return;
         }
 
         this.nameInputElement = document.getElementById('name-form') as HTMLInputElement;

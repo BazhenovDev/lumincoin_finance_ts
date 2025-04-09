@@ -4,15 +4,16 @@ import {
     ExpenseListResponseType
 } from "../../types/expenses-response.type";
 import {ErrorResponse} from "../../types/response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class ExpensesList {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly confirmDeleteButton: HTMLElement | null;
     readonly cancelDeleteButton: HTMLElement | null;
     readonly modalDeleteElement: HTMLElement | null;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
 
         this.confirmDeleteButton = document.getElementById('confirmDeleteButton');

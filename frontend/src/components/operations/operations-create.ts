@@ -1,10 +1,12 @@
 import {HttpUtils} from "../../utils/http-utils";
 import {ErrorResponse, IncomeAndResponseResponse, IncomeAndExpenseResponseList} from "../../types/response.type";
 import {OperationsBodyResponseType} from "../../types/operations-response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class OperationsCreate {
 
-    readonly openNewRoute: Function;
+
+    readonly openNewRoute: OpenNewRouteType;
     readonly formSelectTypeElement: HTMLElement | null;
     readonly formSelectCategoryElement: HTMLElement | null;
     readonly formAmountElement: HTMLElement | null;
@@ -13,7 +15,8 @@ export class OperationsCreate {
     readonly cancelButtonElement: HTMLElement | null;
     readonly createButtonElement: HTMLElement | null;
 
-    constructor(openNewRoute: Function) {
+
+    constructor(openNewRoute: OpenNewRouteType) {
 
         this.openNewRoute = openNewRoute;
         this.formSelectTypeElement = document.getElementById('form-select-type');
@@ -45,7 +48,7 @@ export class OperationsCreate {
         }
 
         if (this.cancelButtonElement) {
-            this.cancelButtonElement.addEventListener('click', () => this.openNewRoute('/operations'));
+            this.cancelButtonElement.addEventListener('click', () => this.openNewRoute('/operations?period=today'));
         }
 
         if (this.createButtonElement) {

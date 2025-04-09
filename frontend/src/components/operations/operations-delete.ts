@@ -1,12 +1,13 @@
 import {HttpUtils} from "../../utils/http-utils";
 import {DeleteResponse, ErrorResponse} from "../../types/response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class OperationsDelete {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly id: string | null;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
 
         this.openNewRoute = openNewRoute;
 
@@ -28,7 +29,7 @@ export class OperationsDelete {
             if (!result || result.error || (result.response && result.response.error)) {
                 return console.log('Произошла ошибка по удалению расхода');
             }
-            this.openNewRoute('/operations');
+            this.openNewRoute('/operations?period=today');
             return;
         }
     }

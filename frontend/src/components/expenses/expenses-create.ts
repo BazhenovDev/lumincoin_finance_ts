@@ -1,16 +1,17 @@
 import {HttpUtils} from "../../utils/http-utils";
 import {ExpenseCreateResponseType} from "../../types/expenses-response.type";
 import {ErrorResponse} from "../../types/response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class ExpensesCreate {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly expenseNameInput: HTMLInputElement | null | undefined;
     readonly createButtonElement: HTMLElement | null | undefined;
     readonly cancelButtonElement: HTMLElement | null | undefined;
 
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
 
         this.expenseNameInput = document.getElementById('expenses-create') as HTMLInputElement;

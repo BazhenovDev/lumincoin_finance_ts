@@ -1,10 +1,11 @@
 import {AuthUtils} from "../../utils/auth-utils";
 import {HttpUtils} from "../../utils/http-utils";
 import {LoginResponseType} from "../../types/auth-response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class LoginPage {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
 
     // Почему-то если не добавить undefined, то будет ошибка
     readonly emailInputElement: HTMLInputElement | null | undefined;
@@ -12,11 +13,12 @@ export class LoginPage {
     private rememberMeElement: HTMLElement | null | undefined;
     readonly loginButtonElement: HTMLElement | null | undefined;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
 
         if (AuthUtils.getUserInfo(AuthUtils.accessTokenKey)) {
-            return this.openNewRoute('/');
+            this.openNewRoute('/').then();
+            return;
         }
 
         this.emailInputElement = document.getElementById('email-form') as HTMLInputElement;

@@ -1,21 +1,23 @@
 import {HttpUtils} from "../../utils/http-utils";
 import {ExpenseEditResponseType, ExpenseEditResultResponseType} from "../../types/expenses-response.type";
 import {ErrorResponse} from "../../types/response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class ExpensesEdit {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly inputNameElement: HTMLInputElement | null | undefined;
     private getExpenseResult: ExpenseEditResultResponseType | undefined;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
 
         const url: URLSearchParams = new URLSearchParams(window.location.search);
         const expenseId: string | null = url.get('id');
 
         if (!expenseId) {
-            return this.openNewRoute('/expenses');
+            this.openNewRoute('/expenses').then();
+            return;
         }
 
         this.inputNameElement = document.getElementById('expenses-create') as HTMLInputElement;
@@ -86,7 +88,7 @@ export class ExpensesEdit {
                     });
 
                     if (result.redirect) {
-                        this.openNewRoute(result.redirect);
+                        this.openNewRoute(result.redirect).then();
                     }
 
                     if (result.response && !result.error) {

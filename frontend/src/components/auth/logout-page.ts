@@ -1,12 +1,13 @@
 import {AuthUtils} from "../../utils/auth-utils";
 import {HttpUtils} from "../../utils/http-utils";
 import {DefaultErrorResponseType, LogoutResponseType} from "../../types/auth-response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class LogoutPage {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
 
         this.logout().then();

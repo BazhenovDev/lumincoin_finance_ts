@@ -1,12 +1,13 @@
 import {HttpUtils} from "../../utils/http-utils";
 import {ExpenseDeleteResponseType} from "../../types/expenses-response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class ExpensesDelete {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly id: string | null;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
 
         const url = new URLSearchParams(window.location.search);

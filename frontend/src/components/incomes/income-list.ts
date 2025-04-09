@@ -1,16 +1,17 @@
 import {HttpUtils} from "../../utils/http-utils";
 import {ErrorResponse} from "../../types/response.type";
 import {IncomeResponse, IncomeResponseList} from "../../types/income-response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class IncomeList {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly confirmDeleteButton: HTMLElement | null;
     readonly cancelDeleteButton: HTMLElement | null;
     readonly modalDeleteElement: HTMLElement | null;
 
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
 
         this.confirmDeleteButton = document.getElementById('confirmDeleteButton') as HTMLButtonElement;
@@ -26,9 +27,14 @@ export class IncomeList {
 
         if ((incomes as ErrorResponse).error) {
             console.log((incomes as ErrorResponse).response.message);
-            return (incomes as ErrorResponse).redirect
-                ? this.openNewRoute((incomes as ErrorResponse).redirect)
-                : console.log((incomes as ErrorResponse).response.message);
+
+            if (incomes.redirect) {
+                this.openNewRoute(incomes.redirect).then();
+                return;
+            }
+                // return (incomes as ErrorResponse).redirect
+                //     ? this.openNewRoute((incomes as ErrorResponse).redirect).then()
+                //     : console.log((incomes as ErrorResponse).response.message);
         }
 
         const incomesWrapper: HTMLElement | null = document.querySelector('.card-wrapper');

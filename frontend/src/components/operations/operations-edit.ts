@@ -5,10 +5,11 @@ import {
 import {ErrorResponse, IncomeAndResponseResponse} from "../../types/response.type";
 import {ExpenseDefaultResponseType, ExpenseListResponseType} from "../../types/expenses-response.type";
 import {IncomeResponse, IncomeResponseList} from "../../types/income-response.type";
+import {OpenNewRouteType} from "../../types/opennewroute.type";
 
 export class OperationsEdit {
 
-    readonly openNewRoute: Function;
+    readonly openNewRoute: OpenNewRouteType;
     readonly formSelectTypeElement: HTMLElement | null;
     readonly formSelectCategoryElement: HTMLElement | null;
     readonly formAmountElement: HTMLElement | null;
@@ -18,7 +19,7 @@ export class OperationsEdit {
     readonly cancelButtonElement: HTMLElement | null;
     readonly createButtonElement: HTMLElement | null;
 
-    constructor(openNewRoute: Function) {
+    constructor(openNewRoute: OpenNewRouteType) {
         this.openNewRoute = openNewRoute;
         this.formSelectTypeElement = document.getElementById('form-select-type') as HTMLSelectElement;
         this.formSelectCategoryElement = document.getElementById('form-select-category');
@@ -38,7 +39,7 @@ export class OperationsEdit {
         this.getOperation().then();
 
         if (this.cancelButtonElement) {
-            this.cancelButtonElement.addEventListener('click', () => this.openNewRoute('/operations'));
+            this.cancelButtonElement.addEventListener('click', () => this.openNewRoute('/operations?period=today'));
         }
         if (this.createButtonElement) {
             this.createButtonElement.addEventListener('click', this.updateData.bind(this));
@@ -191,7 +192,7 @@ export class OperationsEdit {
         if (Object.keys(newData).length > 0) {
             const response = await HttpUtils.request(`/operations/${this.id}`, 'PUT', true, newData);
             if (response.response && !response.error) {
-                this.openNewRoute('/operations')
+                this.openNewRoute('/operations?period=today')
             } else {
                 console.log(`Не удалось произвести изменение ${newData.type === 'income' ? 'дохода' : 'расхода'}, обратитесь в поддержку`);
             }
